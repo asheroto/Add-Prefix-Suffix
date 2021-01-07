@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class MainWindow
 
     Private Sub Button_Go_Click(sender As Object, e As EventArgs) Handles Button_Go.Click
         If Textbox_Text.Text = "" Then Exit Sub
