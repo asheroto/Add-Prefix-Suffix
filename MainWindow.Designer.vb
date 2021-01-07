@@ -110,9 +110,9 @@ Partial Class MainWindow
         Me.Button_ClearText.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.Button_ClearText.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_ClearText.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_ClearText.Location = New System.Drawing.Point(788, 86)
+        Me.Button_ClearText.Location = New System.Drawing.Point(797, 86)
         Me.Button_ClearText.Name = "Button_ClearText"
-        Me.Button_ClearText.Size = New System.Drawing.Size(98, 23)
+        Me.Button_ClearText.Size = New System.Drawing.Size(89, 23)
         Me.Button_ClearText.TabIndex = 5
         Me.Button_ClearText.Text = "Clear"
         Me.Button_ClearText.UseVisualStyleBackColor = True
