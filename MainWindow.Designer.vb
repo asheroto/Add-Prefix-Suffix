@@ -37,6 +37,8 @@ Partial Class MainWindow
         Me.Button_ClearPrefix = New System.Windows.Forms.Button()
         Me.Button_ClearSuffix = New System.Windows.Forms.Button()
         Me.Timer_BringToFront = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer_AppUpdate = New System.Windows.Forms.Timer(Me.components)
+        Me.BackgroundWorker_AppUpdate = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'Textbox_Text
@@ -156,7 +158,15 @@ Partial Class MainWindow
         Me.Timer_BringToFront.Enabled = True
         Me.Timer_BringToFront.Interval = 250
         '
-        'Form1
+        'Timer_AppUpdate
+        '
+        Me.Timer_AppUpdate.Enabled = True
+        Me.Timer_AppUpdate.Interval = 1000
+        '
+        'BackgroundWorker_AppUpdate
+        '
+        '
+        'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 21.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -179,7 +189,7 @@ Partial Class MainWindow
         Me.KeyPreview = True
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "MainWindow"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Add Prefix/Suffix to Text"
         Me.ResumeLayout(False)
@@ -200,4 +210,6 @@ Partial Class MainWindow
     Friend WithEvents Button_ClearPrefix As Button
     Friend WithEvents Button_ClearSuffix As Button
     Friend WithEvents Timer_BringToFront As Timer
+    Friend WithEvents Timer_AppUpdate As Timer
+    Friend WithEvents BackgroundWorker_AppUpdate As System.ComponentModel.BackgroundWorker
 End Class
