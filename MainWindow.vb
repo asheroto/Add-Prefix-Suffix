@@ -2,19 +2,30 @@
 Imports Newtonsoft.Json
 
 Public Class MainWindow
+    Dim Undo As String
 
     Private Sub Button_Go_Click(sender As Object, e As EventArgs) Handles Button_Go.Click
         If Textbox_Text.Text = "" Then Exit Sub
 
-        Dim result_count As Integer
         Dim result As String = Nothing
         For Each line In Textbox_Text.Lines
             result += TextBox_Prefix.Text & line & TextBox_Suffix.Text & vbCrLf
-            result_count += 1
         Next
 
-        Clipboard.SetText(result)
+        Undo = Textbox_Text.Text
 
+        Textbox_Text.Text = result
+
+        FlashDone()
+
+        Button_Undo.Enabled = True
+
+        Textbox_Text.Focus()
+
+        SendKeys.Send("{HOME}")
+    End Sub
+
+    Sub FlashDone()
         Label_Done.Visible = True
         Label_Done.Left = Button_Go.Left
         Label_Done.Top = Button_Go.Top
@@ -93,6 +104,19 @@ Public Class MainWindow
 
         End Try
     End Sub
+
+    Private Sub Button_Undo_Click(sender As Object, e As EventArgs) Handles Button_Undo.Click
+        Button_Undo.Enabled = False
+        Textbox_Text.Text = Undo
+        Textbox_Text.Focus()
+        FlashDone()
+    End Sub
+
+    Private Sub Button_Copy_Click(sender As Object, e As EventArgs) Handles Button_Copy.Click
+        Clipboard.SetText(Textbox_Text.Text)
+        FlashDone()
+    End Sub
+
 End Class
 
 Public Class API
@@ -117,4 +141,5 @@ Public Class API
             m_download_url = value
         End Set
     End Property
+
 End Class
