@@ -30,7 +30,6 @@ Partial Class MainWindow
         Me.Label_Suffix = New System.Windows.Forms.Label()
         Me.TextBox_Suffix = New System.Windows.Forms.TextBox()
         Me.Button_Go = New System.Windows.Forms.Button()
-        Me.Label_Text = New System.Windows.Forms.Label()
         Me.Timer_RemoveDone = New System.Windows.Forms.Timer(Me.components)
         Me.Button_ClearText = New System.Windows.Forms.Button()
         Me.Label_Done = New System.Windows.Forms.Label()
@@ -39,15 +38,17 @@ Partial Class MainWindow
         Me.Timer_BringToFront = New System.Windows.Forms.Timer(Me.components)
         Me.Timer_AppUpdate = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker_AppUpdate = New System.ComponentModel.BackgroundWorker()
+        Me.Button_Undo = New System.Windows.Forms.Button()
+        Me.Button_Copy = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Textbox_Text
         '
-        Me.Textbox_Text.Location = New System.Drawing.Point(21, 115)
+        Me.Textbox_Text.Location = New System.Drawing.Point(21, 117)
         Me.Textbox_Text.Multiline = True
         Me.Textbox_Text.Name = "Textbox_Text"
         Me.Textbox_Text.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.Textbox_Text.Size = New System.Drawing.Size(865, 515)
+        Me.Textbox_Text.Size = New System.Drawing.Size(892, 513)
         Me.Textbox_Text.TabIndex = 3
         '
         'TextBox_Prefix
@@ -88,19 +89,10 @@ Partial Class MainWindow
         Me.Button_Go.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_Go.Location = New System.Drawing.Point(711, 12)
         Me.Button_Go.Name = "Button_Go"
-        Me.Button_Go.Size = New System.Drawing.Size(175, 64)
+        Me.Button_Go.Size = New System.Drawing.Size(202, 64)
         Me.Button_Go.TabIndex = 4
-        Me.Button_Go.Text = "Generate && " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copy to Clipboard"
+        Me.Button_Go.Text = "Run"
         Me.Button_Go.UseVisualStyleBackColor = True
-        '
-        'Label_Text
-        '
-        Me.Label_Text.AutoSize = True
-        Me.Label_Text.Location = New System.Drawing.Point(17, 88)
-        Me.Label_Text.Name = "Label_Text"
-        Me.Label_Text.Size = New System.Drawing.Size(36, 21)
-        Me.Label_Text.TabIndex = 6
-        Me.Label_Text.Text = "Text"
         '
         'Timer_RemoveDone
         '
@@ -111,9 +103,9 @@ Partial Class MainWindow
         Me.Button_ClearText.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.Button_ClearText.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_ClearText.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_ClearText.Location = New System.Drawing.Point(797, 87)
+        Me.Button_ClearText.Location = New System.Drawing.Point(815, 82)
         Me.Button_ClearText.Name = "Button_ClearText"
-        Me.Button_ClearText.Size = New System.Drawing.Size(89, 23)
+        Me.Button_ClearText.Size = New System.Drawing.Size(98, 29)
         Me.Button_ClearText.TabIndex = 5
         Me.Button_ClearText.Text = "Clear"
         Me.Button_ClearText.UseVisualStyleBackColor = True
@@ -135,9 +127,9 @@ Partial Class MainWindow
         Me.Button_ClearPrefix.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.Button_ClearPrefix.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_ClearPrefix.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_ClearPrefix.Location = New System.Drawing.Point(607, 16)
+        Me.Button_ClearPrefix.Location = New System.Drawing.Point(607, 12)
         Me.Button_ClearPrefix.Name = "Button_ClearPrefix"
-        Me.Button_ClearPrefix.Size = New System.Drawing.Size(98, 23)
+        Me.Button_ClearPrefix.Size = New System.Drawing.Size(98, 29)
         Me.Button_ClearPrefix.TabIndex = 6
         Me.Button_ClearPrefix.Text = "Clear"
         Me.Button_ClearPrefix.UseVisualStyleBackColor = True
@@ -147,9 +139,9 @@ Partial Class MainWindow
         Me.Button_ClearSuffix.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.Button_ClearSuffix.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button_ClearSuffix.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_ClearSuffix.Location = New System.Drawing.Point(607, 50)
+        Me.Button_ClearSuffix.Location = New System.Drawing.Point(607, 47)
         Me.Button_ClearSuffix.Name = "Button_ClearSuffix"
-        Me.Button_ClearSuffix.Size = New System.Drawing.Size(98, 23)
+        Me.Button_ClearSuffix.Size = New System.Drawing.Size(98, 29)
         Me.Button_ClearSuffix.TabIndex = 7
         Me.Button_ClearSuffix.Text = "Clear"
         Me.Button_ClearSuffix.UseVisualStyleBackColor = True
@@ -167,17 +159,43 @@ Partial Class MainWindow
         'BackgroundWorker_AppUpdate
         '
         '
+        'Button_Undo
+        '
+        Me.Button_Undo.Enabled = False
+        Me.Button_Undo.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.Button_Undo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_Undo.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_Undo.Location = New System.Drawing.Point(711, 82)
+        Me.Button_Undo.Name = "Button_Undo"
+        Me.Button_Undo.Size = New System.Drawing.Size(98, 29)
+        Me.Button_Undo.TabIndex = 9
+        Me.Button_Undo.Text = "Undo"
+        Me.Button_Undo.UseVisualStyleBackColor = True
+        '
+        'Button_Copy
+        '
+        Me.Button_Copy.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.Button_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button_Copy.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_Copy.Location = New System.Drawing.Point(607, 82)
+        Me.Button_Copy.Name = "Button_Copy"
+        Me.Button_Copy.Size = New System.Drawing.Size(98, 29)
+        Me.Button_Copy.TabIndex = 11
+        Me.Button_Copy.Text = "Copy"
+        Me.Button_Copy.UseVisualStyleBackColor = True
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 21.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(898, 642)
+        Me.ClientSize = New System.Drawing.Size(930, 642)
+        Me.Controls.Add(Me.Button_Copy)
+        Me.Controls.Add(Me.Button_Undo)
         Me.Controls.Add(Me.Button_ClearSuffix)
         Me.Controls.Add(Me.Button_ClearPrefix)
         Me.Controls.Add(Me.Label_Done)
         Me.Controls.Add(Me.Button_ClearText)
-        Me.Controls.Add(Me.Label_Text)
         Me.Controls.Add(Me.Button_Go)
         Me.Controls.Add(Me.Label_Suffix)
         Me.Controls.Add(Me.TextBox_Suffix)
@@ -204,7 +222,6 @@ Partial Class MainWindow
     Friend WithEvents Label_Suffix As Label
     Friend WithEvents TextBox_Suffix As TextBox
     Friend WithEvents Button_Go As Button
-    Friend WithEvents Label_Text As Label
     Friend WithEvents Timer_RemoveDone As Timer
     Friend WithEvents Button_ClearText As Button
     Friend WithEvents Label_Done As Label
@@ -213,4 +230,6 @@ Partial Class MainWindow
     Friend WithEvents Timer_BringToFront As Timer
     Friend WithEvents Timer_AppUpdate As Timer
     Friend WithEvents BackgroundWorker_AppUpdate As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Button_Undo As Button
+    Friend WithEvents Button_Copy As Button
 End Class
