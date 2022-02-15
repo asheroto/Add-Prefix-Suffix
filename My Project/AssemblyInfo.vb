@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Adds a prefix and suffix to each line of text.")>
 <Assembly: AssemblyCompany("asher.tools")>
 <Assembly: AssemblyProduct("Add Prefix and Suffix to Text")>
-<Assembly: AssemblyCopyright("Copyright © 2020-2021 asher.tools")>
+<Assembly: AssemblyCopyright("Copyright © 2020-2022 asher.tools")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.6.0.0")>
-<Assembly: AssemblyFileVersion("1.6.0.0")>
+<Assembly: AssemblyVersion("1.7.0.0")>
+<Assembly: AssemblyFileVersion("1.7.0.0")>
